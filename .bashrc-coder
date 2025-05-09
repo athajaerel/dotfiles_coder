@@ -1,0 +1,58 @@
+# Slightly more helpful prompt
+PS1='$(if [[ $? -gt 0 ]]; then echo -e "\[\e[0;31m\]# :("; else echo "\[\e[0;32m\]# :)"; fi) @\h:\W\[\e[0m\] $ '
+
+# Path adds
+PATH=$PATH:$HOME/.local/bin
+PATH=$PATH:$HOME/bin
+export PATH
+
+# Aliases
+unalias -a
+alias biggest='nice -n 19 du -mx . | sort -rn | head'
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
+alias azl='az login --use-device-code --tenant "81a2e584-fd54-4026-8767-34e00f7fd239"'
+
+# Screen saver
+SOCK="/tmp/ssh-agent-$USER-screen"
+if [ $SSH_AUTH_SOCK ] && [ $SSH_AUTH_SOCK != $SOCK ]; then
+	rm -f $SOCK
+	ln -sf $SSH_AUTH_SOCK $SOCK
+	export SSH_AUTH_SOCK=$SOCK
+fi
+
+# Haz screens?
+screen -ls | grep -q "^No Sockets found"
+[[ $? -gt 0 ]] && echo "You have active screen sessions."
+
+# No duplicates in history
+HISTCONTROL=ignoreboth:erasedups
+
+# Append to the history file instead of overwriting it
+shopt -s histappend
+
+# Keep lots of history
+export HISTSIZE=100000
+export HISTFILESIZE=10000000
+export PROMPT_COMMAND='history -a'
+
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
+
+# Start ssh-agent
+eval $(ssh-agent)
+
+# Predictable SSH agent filename
+SOCK="/tmp/ssh-agent-$USER-screen"
+if [ $SSH_AUTH_SOCK ] && [ $SSH_AUTH_SOCK != $SOCK ]; then
+        rm -f $SOCK
+        ln -sf $SSH_AUTH_SOCK $SOCK
+        export SSH_AUTH_SOCK=$SOCK
+fi
+
+# this one contains secrets, it dies when the laptop dies --- do not push
+if [ -f ~/.bashrc-secrets ]; then
+        . ~/.bashrc-secrets
+fi
+
+# vim: set filetype=sh
