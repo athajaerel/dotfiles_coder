@@ -7,10 +7,11 @@ PATH=$PATH:$HOME/bin
 export PATH
 
 # Aliases
+TENANTID='b8b4c61c-f1ca-4aff-a0bd-9c6f01c3eca5'
 unalias -a
 alias biggest='nice -n 19 du -mx . | sort -rn | head'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
-alias azl='az login --use-device-code --tenant "81a2e584-fd54-4026-8767-34e00f7fd239"'
+alias azl="az login --use-device-code --tenant ${TENANTID}"
 
 # Screen saver
 SOCK="/tmp/ssh-agent-$USER-screen"
