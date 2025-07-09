@@ -6,6 +6,10 @@ PATH=$PATH:$HOME/.local/bin
 PATH=$PATH:$HOME/bin
 export PATH
 
+# Workspace builds from scratch every time, so we need to install packages
+MYPKGS='golang golang-github-jinzhu-gorm-dev golang-github-mattn-go-sqlite3-dev'
+sudo apt-get install -y ${MYPKGS}
+
 # Aliases
 TENANTID='b8b4c61c-f1ca-4aff-a0bd-9c6f01c3eca5'
 unalias -a
