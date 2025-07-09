@@ -56,4 +56,7 @@ if [ -f ~/.bashrc-secrets ]; then
         . ~/.bashrc-secrets
 fi
 
+# Go settings
+export GOPATH=$HOME/go
+
 # vim: set filetype=sh
