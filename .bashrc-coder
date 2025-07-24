@@ -7,7 +7,7 @@ PATH=$PATH:$HOME/bin
 export PATH
 
 # Workspace builds from scratch every time, so we need to install packages
-MYPKGS='golang golang-github-jinzhu-gorm-dev golang-github-mattn-go-sqlite3-dev'
+MYPKGS='golang golang-github-jinzhu-gorm-dev golang-github-mattn-go-sqlite3-dev gnupg2'
 sudo apt-get install -y ${MYPKGS}
 
 # Aliases
