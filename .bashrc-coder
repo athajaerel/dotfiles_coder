@@ -1,3 +1,8 @@
+# stuff here which happens every terminal open
+
+# Copy dotfiles into repo
+dotify() { cp -p "$1" /home/coder/.config/coderv2/dotfiles/ ; }
+
 # Slightly more helpful prompt
 PS1='$(if [[ $? -gt 0 ]]; then echo -e "\[\e[0;31m\]# :("; else echo "\[\e[0;32m\]# :)"; fi) @\h:\W\[\e[0m\] $ '
 
@@ -6,15 +11,12 @@ PATH=$PATH:$HOME/.local/bin
 PATH=$PATH:$HOME/bin
 export PATH
 
-# Workspace builds from scratch every time, so we need to install packages
-MYPKGS='golang golang-github-jinzhu-gorm-dev golang-github-mattn-go-sqlite3-dev gnupg2'
-sudo apt-get install -y ${MYPKGS}
-
 # Aliases
 TENANTID='b8b4c61c-f1ca-4aff-a0bd-9c6f01c3eca5'
+DOTSDIR='/home/coder/.config/coderv2/dotfiles'
 unalias -a
 alias biggest='nice -n 19 du -mx . | sort -rn | head'
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
+alias dotfiles='/usr/bin/git --git-dir=${DOTSDIR} --work-tree=$HOME'
 alias azl="az login --use-device-code --tenant ${TENANTID}"
 
 # Screen saver
