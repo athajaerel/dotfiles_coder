@@ -10,14 +10,15 @@ export PATH
 
 # Aliases
 export TENANTID='b8b4c61c-f1ca-4aff-a0bd-9c6f01c3eca5'
-export DOTSDIR='/home/coder/.config/coderv2/dotfiles'
+export DOTSDIR='/home/coder/.config/coderv2/dotfiles/.git'
+export DOTSWD='${DOTSDIR}/..'
 unalias -a
 alias biggest='nice -n 19 du -mx . | sort -rn | head'
 alias dotfiles='/usr/bin/git --git-dir=${DOTSDIR} --work-tree=$HOME'
 alias azl="az login --use-device-code --tenant ${TENANTID}"
 
 # Copy dotfiles into repo
-dotify() { cp -p "$1" ${DOTSDIR}/ ; }
+dotify() { cp -p "$1" ${DOTSWD} ; }
 
 # Screen saver
 SOCK="/tmp/ssh-agent-$USER-screen"
