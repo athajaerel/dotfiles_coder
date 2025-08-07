@@ -1,0 +1,6 @@
+# This is Git's per-user configuration file.
+[user]
+	email = adam.richardson@dcc.disx.co.uk
+	name = Adam Richardson
+[credential]
+	helper = store
