@@ -15,3 +15,4 @@ set ruler                          " line counter
 set tabstop=8                      " tab width 8
 set backspace=indent,eol,start     " backspace over all the things
 set tw=0                           " no word wrap
+set fileformat=unix                " no Windows line endings
