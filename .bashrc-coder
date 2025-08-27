@@ -58,6 +58,10 @@ if [ $SSH_AUTH_SOCK ] && [ $SSH_AUTH_SOCK != $SOCK ]; then
         export SSH_AUTH_SOCK=$SOCK
 fi
 
+# Specify username for Azure SSH scripts
+export TF_VAR_admin_username='adam.richardson'
+export TF_VAR_creator='adam.richardson'
+
 # this one contains secrets, it dies when the laptop dies --- do not push
 if [ -f ~/.bashrc-secrets ]; then
         . ~/.bashrc-secrets
