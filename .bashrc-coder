@@ -47,8 +47,10 @@ export PROMPT_COMMAND='history -a'
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
-# Start ssh-agent
-eval $(ssh-agent)
+# Start ssh-agent if not already running
+if [[ -z "$SSH_AUTH_SOCK" ]]; then
+	eval $(ssh-agent -s)
+fi
 
 # Predictable SSH agent filename
 SOCK="/tmp/ssh-agent-$USER-screen"
