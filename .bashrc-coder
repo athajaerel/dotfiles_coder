@@ -40,7 +40,8 @@ export PROMPT_COMMAND='history -a'
 shopt -s checkwinsize
 
 # Start ssh-agent if not already running
-if [[ -z "$SSH_AUTH_SOCK" ]]; then
+ps ax | grep -v grep | grep -q ssh-agent
+if [ $? -ne 0 ]; then
 	eval $(ssh-agent -s)
 fi
 
