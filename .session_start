@@ -6,10 +6,6 @@ echo dotsessionstart
 # happens every time the workspace starts (well, it'd be nice if it
 # worked...)
 
-# Workspace builds from scratch every time, so we need to install packages
-MYPKGS='golang golang-github-jinzhu-gorm-dev golang-github-mattn-go-sqlite3-dev gnupg2 file xxd'
-sudo apt-get install -y ${MYPKGS}
-
 # Wedge man
 sudo rm -f /usr/bin/man
 sudo ln -s /home/coder/man-db/usr/lib/man-db/man /usr/bin/
@@ -20,3 +16,6 @@ sudo rm -f /etc/apt/sources.list.d/{helm.list,opentofu.list,git-core-ubuntu-ppa-
 # Unminimize
 #yes | sudo unminimize
 
+# Workspace builds from scratch every time, so we need to install packages
+MYPKGS='golang golang-github-jinzhu-gorm-dev golang-github-mattn-go-sqlite3-dev gnupg2 file xxd'
+sudo apt-get install -y ${MYPKGS}
