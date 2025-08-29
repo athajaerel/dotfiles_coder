@@ -20,14 +20,6 @@ alias azl="az login --use-device-code --tenant ${TENANTID}"
 # Copy dotfiles into repo
 dotify() { cp -p "$1" ${DOTSWD} ; }
 
-# Screen saver
-SOCK="/tmp/ssh-agent-$USER-screen"
-if [ $SSH_AUTH_SOCK ] && [ $SSH_AUTH_SOCK != $SOCK ]; then
-	rm -f $SOCK
-	ln -sf $SSH_AUTH_SOCK $SOCK
-	export SSH_AUTH_SOCK=$SOCK
-fi
-
 # Haz screens?
 screen -ls | grep -q "^No Sockets found"
 [[ $? -gt 0 ]] && echo "You have active screen sessions."
