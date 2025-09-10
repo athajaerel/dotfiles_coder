@@ -53,6 +53,10 @@ if [ $SSH_AUTH_SOCK ] && [ $SSH_AUTH_SOCK != $SOCK ]; then
         export SSH_AUTH_SOCK=$SOCK
 fi
 
+# Load gitsshprivatekey
+chmod 0600 ~coder/gitsshprivatekey
+ssh-add ~coder/gitsshprivatekey
+
 # Specify username for Azure SSH scripts
 export TF_VAR_admin_username='adam.richardson'
 export TF_VAR_creator='adam.richardson'
@@ -64,9 +68,5 @@ fi
 
 # Go settings
 export GOPATH=$HOME/go
-
-# Load gitsshprivatekey
-chmod 0600 ~coder/gitsshprivatekey
-ssh-add ~coder/gitsshprivatekey
 
 # vim: set filetype=sh
