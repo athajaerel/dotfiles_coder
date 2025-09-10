@@ -65,4 +65,8 @@ fi
 # Go settings
 export GOPATH=$HOME/go
 
+# Load gitsshprivatekey
+chmod 0600 ~coder/gitsshprivatekey
+ssh-add ~coder/gitsshprivatekey
+
 # vim: set filetype=sh
