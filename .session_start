@@ -1,6 +1,5 @@
 [ -f ~/.common ] && . ~/.common
 touch ${RUNONCEFILE}
-echo dotsessionstart
 
 # stuff here which doesn't happen every time a terminal is opened, but
 # happens every time the workspace starts (well, it'd be nice if it
