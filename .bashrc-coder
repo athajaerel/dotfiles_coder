@@ -20,9 +20,10 @@ alias azl="az login --use-device-code --tenant ${TENANTID}"
 # Copy dotfiles into repo
 dotify() { cp -p "$1" ${DOTSWD} ; }
 
+# This is not useful here. Coder always starts a screen session, so this is always true.
 # Haz screens?
-screen -ls | grep -q "^No Sockets found"
-[[ $? -gt 0 ]] && echo "You have active screen sessions."
+#screen -ls | grep -q "^No Sockets found"
+#[[ $? -gt 0 ]] && echo "You have active screen sessions."
 
 # No duplicates in history
 HISTCONTROL=ignoreboth:erasedups
@@ -58,7 +59,7 @@ fi
 
 # Load gitsshprivatekey
 chmod 0600 ~coder/gitsshprivatekey
-ssh-add ~coder/gitsshprivatekey
+ssh-add ~coder/gitsshprivatekey 2>/dev/null
 
 # Specify username for Azure SSH scripts
 export TF_VAR_admin_username='adam.richardson'
