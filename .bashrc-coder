@@ -73,4 +73,7 @@ fi
 # Go settings
 export GOPATH=$HOME/go
 
+# Prefer monochrome output, please.
+export NO_COLOR=1
+
 # vim: set filetype=sh
