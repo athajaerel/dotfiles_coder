@@ -1,0 +1,11 @@
+#!/usr/bin/python
+
+from __future__ import absolute_import, print_function
+
+import fileinput
+import hashlib
+
+h = hashlib.sha256()
+for line in fileinput.input():
+    h.update(line.encode())
+    print(h.hexdigest()[:4], line, end=' ')
